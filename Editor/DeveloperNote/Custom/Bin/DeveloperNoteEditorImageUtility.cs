@@ -107,18 +107,21 @@ public class DeveloperNoteEditorImageUtility
             if (GUILayout.Button("Brave", GUILayout.Width(m_width / 3f)))
             {
                 string absolutePath = GetAbsolutePathInEditor(texture);
+                CreateTextureIfEmpty(texture, absolutePath, out absolutePath);
                 OpenUrlWithProcess(absolutePath, browserPathBrave);
             }
         if (m_isChromeExists)
             if (GUILayout.Button("Chrome", GUILayout.Width(m_width / 3f)))
             {
                 string absolutePath = GetAbsolutePathInEditor(texture);
+                CreateTextureIfEmpty(texture, absolutePath, out absolutePath);
                 OpenUrlWithProcess(absolutePath, browserPathChrome);
             }
         if (m_isFirefoxExists)
             if (GUILayout.Button("Firefox", GUILayout.Width(m_width / 3f)))
             {
                 string absolutePath = GetAbsolutePathInEditor(texture);
+                CreateTextureIfEmpty(texture, absolutePath, out absolutePath);
                 OpenUrlWithProcess(absolutePath, browserPathFirefox);
             }
 
@@ -127,9 +130,32 @@ public class DeveloperNoteEditorImageUtility
 
     }
 
+    private static void CreateTextureIfEmpty(Texture2D texture, string absolutePath, out string newAbsolutePath)
+    {
+        if (texture == null)
+        {
+            newAbsolutePath = "";
+            return;
+        }
+        if (absolutePath == "")
+        {
+            newAbsolutePath = Application.temporaryCachePath + "/tempimage.png";
+            File.WriteAllBytes(newAbsolutePath, texture.EncodeToPNG());
+        }
+        else
+        {
+            newAbsolutePath = absolutePath;
+        }
+    }
+
     private static string GetAbsolutePathInEditor(Texture2D texture)
     {
         string relativepath = AssetDatabase.GetAssetPath(texture);
+        if(relativepath==null ||  relativepath.Length==0)
+        {
+
+            return "";
+        }
         string absolutePath = Path.GetFullPath(Path.Combine(Application.dataPath, relativepath.Substring("Assets".Length + 1)));
         return absolutePath;
     }

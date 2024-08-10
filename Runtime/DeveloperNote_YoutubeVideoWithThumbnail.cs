@@ -7,7 +7,10 @@ using UnityEngine.Networking;
 
 public class DeveloperNote_YoutubeVideoWithThumbnail : DeveloperNoteWithAuthorMono
 {
+    [HideInInspector]
     public Texture2D m_thumbnail;
+
+    [HideInInspector]
     public string m_thumbnailUrl;
     public string m_youtubeVideoId;
     string m_previousYoutubeVideoId;
@@ -61,7 +64,8 @@ public class DeveloperNote_YoutubeVideoWithThumbnail : DeveloperNoteWithAuthorMo
                 break;
         }
         m_thumbnailUrl = url;
-        StartCoroutine(DownloadImageFrom(url));
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(DownloadImageFrom(url));
         //base.m_imageUrl = url;
         //SetWithURL(url);
     }
@@ -85,6 +89,7 @@ public class DeveloperNote_YoutubeVideoWithThumbnail : DeveloperNoteWithAuthorMo
             else
             {
                 m_thumbnail = DownloadHandlerTexture.GetContent(www);
+               
             }
         }
     }
@@ -92,7 +97,17 @@ public class DeveloperNote_YoutubeVideoWithThumbnail : DeveloperNoteWithAuthorMo
     protected override void OnValidate()
     {
         base.OnValidate();
-        if (m_thumbnail == null) {
+
+        if(m_previousYoutubeVideoId==null)
+            m_previousYoutubeVideoId = "";
+        if(m_youtubeVideoId==null)
+            m_youtubeVideoId = "";
+        if (m_youtubeVideoId == "") {
+            m_previousYoutubeVideoId = "";
+            m_thumbnail= null;
+        }
+
+        if (m_thumbnail == null || !m_youtubeVideoId.Equals(m_previousYoutubeVideoId)) {
             CheckForIdInGivenText();
             if (!m_youtubeVideoId .Equals(m_previousYoutubeVideoId)) {
                 m_previousYoutubeVideoId = m_youtubeVideoId;
@@ -104,6 +119,8 @@ public class DeveloperNote_YoutubeVideoWithThumbnail : DeveloperNoteWithAuthorMo
     
     private void CheckForIdInGivenText()
     {
+        if (m_youtubeVideoId == null)
+            return;
         //https://www.youtube.com/watch?v=dQw4w9WgXcQ
         if (m_youtubeVideoId.IndexOf("youtube.com/watch?v=") > -1)
         {
