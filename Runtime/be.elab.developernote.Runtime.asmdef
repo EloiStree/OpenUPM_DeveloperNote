@@ -1,12 +1,10 @@
 
 {                                                                   
-            "name": "be.eloistree.developernoteEditor",          
-    "references": ["be.eloistree.developernote"
+            "name": "be.elab.developernote",          
+    "references": [
 ],                                                              
     "optionalUnityReferences": [],                                  
-    "includePlatforms": [                                           
-        "Editor"                                                    
-    ],                                                              
+    "includePlatforms": [],                                                  
     "excludePlatforms": [],                                         
     "allowUnsafeCode": false,                                       
     "overrideReferences": false,                                    
