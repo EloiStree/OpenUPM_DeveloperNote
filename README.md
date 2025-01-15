@@ -1,2 +1,4 @@
-# 2024_08_09_DeveloperNote
-Tool that allows you to put some developer note in your unity project.
+# OpenUPM: Developer Note
+
+Just a tools that allows to put some note in your Scene as developer.
+Nothing crazy but useful.
