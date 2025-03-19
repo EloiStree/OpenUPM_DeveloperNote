@@ -2,7 +2,7 @@
 {                                                                                
   "name": "be.elab.developernote",                              
   "displayName": "Developer Note",                        
-  "version": "2025.1.16",                         
+  "version": "1.0.0",                         
   "unity": "2018.1",                             
   "unityRelease": "",                             
   "description": "Allows to put some developer note in your project.",                         
