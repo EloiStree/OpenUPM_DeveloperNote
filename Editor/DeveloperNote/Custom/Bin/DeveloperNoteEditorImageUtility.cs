@@ -26,7 +26,7 @@ public class DeveloperNoteEditorImageUtility
     }
     public static void OpenInUnity(Texture2D texture)
     {
-        DeveloperNoteMenuEditor_DisplayImage.CreateWindow(texture, () => { OpenInBrowser(texture); });
+        NoteMenuEditor_DisplayImage.CreateWindow(texture, () => { OpenInBrowser(texture); });
     }
     public static void CopyTextureNotReadable(Texture2D originalTexture, out Texture2D copy)
     {
@@ -67,66 +67,68 @@ public class DeveloperNoteEditorImageUtility
         float ratio = texture.height / (float)texture.width;
         if (GUILayout.Button("", style, GUILayout.Width(m_width), GUILayout.Height(m_width * ratio)))
         {
-            if (toDoOnClick != null)
-                toDoOnClick.Invoke();
-            else OpenInBrowser(texture);
+            //if (toDoOnClick != null)
+            //    toDoOnClick.Invoke();
+            //else 
+                OpenInBrowser(texture);
         }
 
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Web", GUILayout.Width(m_width / 3f)))
+        if (GUILayout.Button("Image", GUILayout.Width(m_width)))
         {
-            if (toDoOnClick != null)
-                toDoOnClick.Invoke();
-            else OpenInBrowser(texture);
+            //if (toDoOnClick != null)
+            //    toDoOnClick.Invoke();
+            //else 
+                OpenInBrowser(texture);
         }
-        if (GUILayout.Button("Unity", GUILayout.Width(m_width / 3f)))
-        {
-            if (toDoOnClick != null)
-                DeveloperNoteMenuEditor_DisplayImage.CreateWindow(texture, toDoOnClick.Invoke);
-            else OpenInUnity(texture);
-        }
-        if (GUILayout.Button("Source", GUILayout.Width(m_width / 3f)))
-        {
+        //if (GUILayout.Button("Unity", GUILayout.Width(m_width / 3f)))
+        //{
+        //    if (toDoOnClick != null)
+        //        NoteMenuEditor_DisplayImage.CreateWindow(texture, toDoOnClick.Invoke);
+        //    else OpenInUnity(texture);
+        //}
+        //if (GUILayout.Button("Source", GUILayout.Width(m_width / 3f)))
+        //{
 
 
-            if (texture != null)
-            {
-                string absolutePath = GetAbsolutePathInEditor(texture);
+        //    if (texture != null)
+        //    {
+        //        string absolutePath = GetAbsolutePathInEditor(texture);
 
-                Application.OpenURL(absolutePath);
-            }
+        //        Application.OpenURL(absolutePath);
+        //    }
 
 
 
-        }
+        //}
         GUILayout.EndHorizontal();
-        GUILayout.BeginHorizontal();
+        //GUILayout.BeginHorizontal();
 
-        if (m_isBraveExists)
-            if (GUILayout.Button("Brave", GUILayout.Width(m_width / 3f)))
-            {
-                string absolutePath = GetAbsolutePathInEditor(texture);
-                CreateTextureIfEmpty(texture, absolutePath, out absolutePath);
-                OpenUrlWithProcess(absolutePath, browserPathBrave);
-            }
-        if (m_isChromeExists)
-            if (GUILayout.Button("Chrome", GUILayout.Width(m_width / 3f)))
-            {
-                string absolutePath = GetAbsolutePathInEditor(texture);
-                CreateTextureIfEmpty(texture, absolutePath, out absolutePath);
-                OpenUrlWithProcess(absolutePath, browserPathChrome);
-            }
-        if (m_isFirefoxExists)
-            if (GUILayout.Button("Firefox", GUILayout.Width(m_width / 3f)))
-            {
-                string absolutePath = GetAbsolutePathInEditor(texture);
-                CreateTextureIfEmpty(texture, absolutePath, out absolutePath);
-                OpenUrlWithProcess(absolutePath, browserPathFirefox);
-            }
+        ////if (m_isBraveExists)
+        ////    if (GUILayout.Button("Brave", GUILayout.Width(m_width / 3f)))
+        ////    {
+        ////        string absolutePath = GetAbsolutePathInEditor(texture);
+        ////        CreateTextureIfEmpty(texture, absolutePath, out absolutePath);
+        ////        OpenUrlWithProcess(absolutePath, browserPathBrave);
+        ////    }
+        ////if (m_isChromeExists)
+        ////    if (GUILayout.Button("Chrome", GUILayout.Width(m_width / 3f)))
+        ////    {
+        ////        string absolutePath = GetAbsolutePathInEditor(texture);
+        ////        CreateTextureIfEmpty(texture, absolutePath, out absolutePath);
+        ////        OpenUrlWithProcess(absolutePath, browserPathChrome);
+        ////    }
+        ////if (m_isFirefoxExists)
+        ////    if (GUILayout.Button("Firefox", GUILayout.Width(m_width / 3f)))
+        ////    {
+        ////        string absolutePath = GetAbsolutePathInEditor(texture);
+        ////        CreateTextureIfEmpty(texture, absolutePath, out absolutePath);
+        ////        OpenUrlWithProcess(absolutePath, browserPathFirefox);
+        ////    }
 
 
-        GUILayout.EndHorizontal();
+        //GUILayout.EndHorizontal();
 
     }
 
