@@ -5,12 +5,18 @@ using UnityEngine;
 
 namespace Eloi.Note
 {
-
+    /// <summary>
+    /// IF THERE IS ONE THAT YOU DONT WANT TO RENAME IT IS THIS ONE
+    /// NOTE FROM AUTHOR
+    /// </summary>
     [System.Serializable]
     public class TextNoteMono : NoteMonoBehaviour , I_HasTextNote
 {
-        [Tooltip("The note to be share on the current gameobject")]
-       
+        [Tooltip("The note to be share")]
+        /// <summary>
+        /// IF THERE IS ONE THAT YOU DONT WANT TO RENAME IT IS THIS ONE
+        /// NOTE FROM AUTHOR
+        /// </summary>
         public TextNote m_note;
          public void GetNote(out string note)
         {
