@@ -1,6 +1,9 @@
-﻿[System.Serializable]
-public class Note_KeyWordsToGoogle
+﻿namespace Eloi.Note
 {
-    public string[] m_keywordsToSearch;
+    [System.Serializable]
+    public class Note_KeyWordsToGoogle
+    {
+        public string[] m_keywordsToSearch;
 
+    }
 }

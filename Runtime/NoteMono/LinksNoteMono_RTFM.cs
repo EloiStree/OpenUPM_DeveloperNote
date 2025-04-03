@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-namespace Eloi
+namespace Eloi.Note
 {
+
     public class LinksNoteMono_RTFM : LinksNoteMono
     {
         [ContextMenu("Open RTFM")]

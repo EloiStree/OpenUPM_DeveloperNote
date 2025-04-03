@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
-namespace Eloi
+namespace Eloi.Note
 {
     [CustomEditor(typeof(LinkNoteMono_YoutubeVideo))]
     public class NoteEditor_YoutubeVideo : Editor

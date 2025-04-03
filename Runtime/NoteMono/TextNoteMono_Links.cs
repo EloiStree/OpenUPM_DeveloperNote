@@ -1,14 +1,16 @@
 ﻿using Eloi.Note;
 using UnityEngine;
-
-public class TextNoteMono_Links : TextNoteMono
+namespace Eloi.Note
 {
-
-    public NoteLink.NameLinkArray m_links = new NoteLink.NameLinkArray();
-
-    [ContextMenu("Open Links")]
-    public void OpenLinks()
+    public class TextNoteMono_Links : TextNoteMono
     {
-        m_links.OpenLinks();
+
+        public NoteLink.NamedLinkArray m_links = new NoteLink.NamedLinkArray();
+
+        [ContextMenu("Open Links")]
+        public void OpenLinks()
+        {
+            m_links.OpenLinks();
+        }
     }
 }

@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
-namespace Eloi
+namespace Eloi.Note
 {
     [CustomEditor(typeof(NoteMono_ImageInProject), true)]
     public class NoteEditor_ImageInProject : Editor

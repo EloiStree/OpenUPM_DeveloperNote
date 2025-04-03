@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
-namespace Eloi
+namespace Eloi.Note
 {
     [CustomEditor(typeof(LinksNoteMono_RTFM))]
     public class NoteEditor_RTFM : Editor

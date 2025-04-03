@@ -5,7 +5,7 @@ namespace Eloi.Note {
 public class LinkNoteMono : NoteMonoBehaviour
 {
 
-    public NoteLink.NameLink m_link =new NoteLink.NameLink();
+    public NoteLink.NamedLink m_link =new NoteLink.NamedLink();
 
     [ContextMenu("Open Links")]
     public void OpenLinks()

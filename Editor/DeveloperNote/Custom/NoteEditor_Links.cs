@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Eloi
+
+namespace Eloi.Note
+
 {
     [CustomEditor(typeof(LinksNoteMono), true)]
     public class NoteEditor_Links : Editor

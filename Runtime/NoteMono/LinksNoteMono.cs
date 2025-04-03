@@ -2,14 +2,17 @@ using Eloi.Note;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class LinksNoteMono : NoteMonoBehaviour
+namespace Eloi.Note
 {
-
-    public NoteLink.NameLinkArray m_links = new NoteLink.NameLinkArray();
-
-    [ContextMenu("Open Links")]
-    public void OpenLinks()
+    public class LinksNoteMono : NoteMonoBehaviour
     {
-        m_links.OpenLinks();
+
+        public NoteLink.NamedLinkArray m_links = new NoteLink.NamedLinkArray();
+
+        [ContextMenu("Open Links")]
+        public void OpenLinks()
+        {
+            m_links.OpenLinks();
+        }
     }
 }

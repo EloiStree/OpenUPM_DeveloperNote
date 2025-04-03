@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class LinksNoteMono_Source : LinksNoteMono
+namespace Eloi.Note
 {
-    [ContextMenu("Open Source")]
-    public void OpenSource()
+    public class LinksNoteMono_Source : LinksNoteMono
     {
-        base.OpenLinks();
+        [ContextMenu("Open Source")]
+        public void OpenSource()
+        {
+            base.OpenLinks();
+        }
     }
 }

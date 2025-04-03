@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-
-namespace Eloi
+namespace Eloi.Note
 {
     [CustomEditor(typeof(NoteMono_MarkDown))]
     public class NoteEditor_MarkDown : Editor
