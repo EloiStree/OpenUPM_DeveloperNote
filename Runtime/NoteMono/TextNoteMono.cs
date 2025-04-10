@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Eloi.Note
 {
+
+    
+
     /// <summary>
     /// IF THERE IS ONE THAT YOU DONT WANT TO RENAME IT IS THIS ONE
     /// NOTE FROM AUTHOR
