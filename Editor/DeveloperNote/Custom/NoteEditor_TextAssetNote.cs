@@ -6,7 +6,6 @@ using System.IO;
 using System.Threading;
 using UnityEditor;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 namespace Eloi.Note
 {
     [CustomEditor(typeof(TextAssetNoteMono), true)]
@@ -25,8 +24,8 @@ namespace Eloi.Note
                     string projectPath = Directory.GetCurrentDirectory();
                     string relativeFolder = "Assets/Resources/Note";
                     string fullPath = Path.Combine(projectPath, relativeFolder);
-                    string guid = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                    string fileName = "Note_" + guid + ".txt";
+                    string guid = myScript.gameObject.name.Replace(" ","").Trim()+"_"+DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                    string fileName = "Note_" + guid + ".md";
                     string path = Path.Combine(fullPath, fileName);
                     string projectRelativePath = Path.Combine(relativeFolder, fileName);
                     string directory = Path.GetDirectoryName(path);
@@ -43,17 +42,17 @@ namespace Eloi.Note
                 }
 
             }
+            string text = myScript.m_note.GetNote();
 
-            if (GUILayout.Button("Edit")) {
-
-                string filePath = AssetDatabase.GetAssetPath(myScript.m_note.m_textNote);
-                string fullFilePath = Directory.GetCurrentDirectory() + "/" + filePath;
-                if (string.IsNullOrEmpty(fullFilePath))
-                {
-                    Debug.LogError("TextAsset is not assigned or not a valid path.");
-                    return;
-                }
-                Application.OpenURL("file://" + fullFilePath);
+            if (myScript.m_note != null && myScript.m_note.m_textNote != null && GUILayout.Button("Edit"))
+            {
+                OpenFile(myScript);
+            }
+            if (!string.IsNullOrWhiteSpace(text)&& GUILayout.Button("Ponctuation/Spelling") )
+            {
+                string correct = "https://chat.openai.com/?prompt=Correct+ponctuation+and+grammar+in+the+following+text";
+                Application.OpenURL(correct);
+                OpenFile(myScript);
             }
             if (myScript.m_note == null)
             {
@@ -61,8 +60,20 @@ namespace Eloi.Note
                 return;
             }
             else { 
-                GUILayout.TextField(myScript.m_note.GetNote(), GUILayout.Height(400));
+                GUILayout.TextField(text, GUILayout.Height(400));
             }
+        }
+
+        private static void OpenFile(TextAssetNoteMono myScript)
+        {
+            string filePath = AssetDatabase.GetAssetPath(myScript.m_note.m_textNote);
+            string fullFilePath = Directory.GetCurrentDirectory() + "/" + filePath;
+            if (string.IsNullOrEmpty(fullFilePath))
+            {
+                Debug.LogError("TextAsset is not assigned or not a valid path.");
+                return;
+            }
+            Application.OpenURL("file://" + fullFilePath);
         }
     }
 }

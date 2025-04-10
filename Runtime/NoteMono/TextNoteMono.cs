@@ -23,6 +23,12 @@ namespace Eloi.Note
         public TextNote m_note;
          public void GetNote(out string note)
         {
+            if(m_note == null)
+            {
+                note = string.Empty;
+                return;
+            }
+
             m_note.GetNote(out note);
         }
         public void SetNote(string note)
@@ -33,6 +39,13 @@ namespace Eloi.Note
 
             GetNote(out string note);
             return note;
+        }
+
+        [ContextMenu("Open Chat GPT with text")]
+        public void OpenChatGptWithText() {
+
+            string correct = "https://chat.openai.com/?prompt=Rephrase+"+ m_note.GetNote().Replace(" ","+");
+            Application.OpenURL(correct);
         }
     }
 

@@ -10,6 +10,7 @@ namespace Eloi.Note
     {
 
         public TextAssetNote m_note;
+       
 
         public void GetNote(out string note)
         {
