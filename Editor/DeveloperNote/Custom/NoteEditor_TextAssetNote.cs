@@ -59,8 +59,8 @@ namespace Eloi.Note
                 EditorGUILayout.HelpBox("No Note", MessageType.Warning);
                 return;
             }
-            else { 
-                GUILayout.TextField(text, GUILayout.Height(400));
+            else {
+                GUILayout.TextField(text,  GUILayout.MinHeight(10), GUILayout.Height(40), GUILayout.MaxHeight(100));
             }
         }
 
